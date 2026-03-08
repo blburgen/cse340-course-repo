@@ -17,10 +17,21 @@ CREATE TABLE category (
 	name VARCHAR(75) NOT NULL
 );
 
+INSERT INTO category (name)
+VALUES
+('Enironmental'),
+('Educational'),
+('Community Service'),
+('Health and Wellness');
+
 CREATE TABLE service_project (
 	service_project_id SERIAL PRIMARY KEY,
-	name VARCHAR(150) NOT NULL,
-	description TEXT NOT NULL
+	organization_id INTEGER,
+	title VARCHAR(150) NOT NULL,
+	description TEXT NOT NULL,
+	location VARCHAR(150),
+	date VARCHAR(150),
+	FOREIGN KEY (organization_id) REFERENCES organization (organization_id)
 );
 
 CREATE TABLE category_service (
@@ -31,14 +42,7 @@ CREATE TABLE category_service (
 	FOREIGN KEY (category_id) REFERENCES category (category_id)
 );
 
-INSERT INTO category (name)
-VALUES
-('Enironmental'),
-('Educational'),
-('Community Service'),
-('Health and Wellness');
-
-INSERT INTO service_project (name,description)
+INSERT INTO service_project (title,description)
 VALUES
 ('Park Cleanup','Join us to clean up local parks and make them beautiful!'),
 ('Food Drive','Help collect and distribute food to those in need.'),
