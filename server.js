@@ -46,10 +46,14 @@ app.get('/organizations', async (req, res) => {
 });
 
 app.get('/projects', async (req, res) => {
-  const projects = await getAllProjects();
+  try{
+    const projects = await getAllProjects();
 
-  const title = 'Service Projects';
-  res.render('projects', { title, projects});
+    const title = 'Service Projects';
+    res.render('projects', { title, projects});
+  } catch (err) {
+    return next(err); // centralized error handler logs & renders an error page
+  }
 });
 
 app.get('/categories', async (req, res) => {

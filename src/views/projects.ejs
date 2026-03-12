@@ -6,7 +6,7 @@
             <% projects.forEach(project => { %>
                 <li><strong><%= project.title %></strong>: <%= project.description %><br>
                 <strong>Location:</strong><%= project.location %> <strong>Date:</strong><%= project.date %><br>
-                <strong>Sponsored By:</strong><%= project.name %></li><br>
+                <strong>Sponsored By:</strong><%= project.name || 'No sponsor'%></li><br>
             <% }); %>
         </ul>
     </main>

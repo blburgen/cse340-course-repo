@@ -31,7 +31,7 @@ CREATE TABLE service_project (
 	description TEXT NOT NULL,
 	location VARCHAR(150),
 	date VARCHAR(150),
-	FOREIGN KEY (organization_id) REFERENCES organization (organization_id)
+	FOREIGN KEY (organization_id) REFERENCES organization (organization_id) On DELETE SET NULL
 );
 
 INSERT INTO service_project (organization_id,title,description,location,date)

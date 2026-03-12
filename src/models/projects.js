@@ -4,7 +4,7 @@ const getAllProjects = async() => {
   const query = `
     SELECT s.service_project_id,o.name,s.title,s.description,s.location,s.date
     FROM public.service_project s
-    INNER JOIN public.organization o
+    LEFT JOIN public.organization o
     ON s.organization_id = o.organization_id
     ORDER BY s.date;
   `;
