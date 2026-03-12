@@ -19,7 +19,7 @@ CREATE TABLE category (
 
 INSERT INTO category (name)
 VALUES
-('Enironmental'),
+('Environmental'),
 ('Educational'),
 ('Community Service'),
 ('Health and Wellness');

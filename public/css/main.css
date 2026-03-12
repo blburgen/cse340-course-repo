@@ -27,41 +27,77 @@ nav {
     margin: 0 auto;
     display: block;
     text-align: center;
-    ul {
-        display: flex;
-        flex-wrap: wrap;
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
+}
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
-    li {
-        flex-grow: 1;
-        display: block;
-        margin-right: 15px;
-    }
+nav li {
+    flex-grow: 1;
+    display: block;
+    margin-right: 15px;
+}
 
-    a {
-        display: block;
-        text-decoration: none;
-        color: var(--primary-color);
-        background-color: var(--gray-f0);
-        font-size: large;
-        font-weight: 900;
-        border: solid 1px var(--primary-color);
-        border-radius: 1rem;
-        padding-top: 10px;
-        padding-bottom: 10px;
+nav a {
+    display: block;
+    text-decoration: none;
+    color: var(--primary-color);
+    background-color: var(--gray-f0);
+    font-size: large;
+    font-weight: 900;
+    border: solid 1px var(--primary-color);
+    border-radius: 1rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
-        &:hover {
-            background-color: var(--third-color);
-            background-color: var(--gray-c);
-        }
-    }
-}  
+nav a:hover {
+    background-color: var(--third-color);
+    background-color: var(--gray-c);
+}
 
 footer{
     border-top: 1px solid var(--primary-color);
     text-align: center;
     padding: 10px;
+}
+
+main ul{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+main ul li{
+    border: 1px solid var(--primary-color);
+    border-radius: 1rem;
+    background-color: var(--third-color);
+    padding: 0 10px 10px 10px;
+    margin: 10px;
+    width: 31%;
+}
+
+.topline{
+    border-top: 1px solid var(--primary-color);
+}
+
+li div{
+    padding-top: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+    main ul li{
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    main ul li{
+        width: 100%;
+    }
 }
