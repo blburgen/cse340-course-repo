@@ -50,7 +50,22 @@ VALUES
 (2,'Plant A Tree','Help to beautify our local community by planting a free tree in your yard.','Green River Green House','2026/04/11'), -- 12
 (2,'Plant Vegitables','Come plan some vegitable in our community garden and take home some for yourself.','Rock Road Community Garden','2026/04/01'), -- 13
 (2,'Green House Construction','Our community garden needs a new green house.  Please come and help put it up.','Rocky Sanders Gardens','2026/05/01'), -- 14
-(2,'Learn To Grow','Help others learn how to keep a garden or come learn how to keep a garden.','Sam Community Park','2026/03/25'); -- 15
+(2,'Learn To Grow','Help others learn how to keep a garden or come learn how to keep a garden.','Sam Community Park','2026/03/25'), --15
+(1, 'Riverbank Revitalization','Renovate the downtown riverbank promenade with sustainable materials and native plants.','River City, TX','2024-09-15'), -- 16
+(1, 'Community Playground Build','Construct an eco‑friendly playground with recycled wood and solar lighting.','River City, TX','2024-10-10'), -- 17
+(1, 'Solar Roof Installation','Install photovoltaic panels on the roof of the local community center.','River City, TX','2024-11-05'), -- 18
+(1, 'Green Roof Garden','Create a vegetable garden on the roof of the municipal library.','River City, TX','2024-12-01'), -- 19
+(1, 'Bike‑Lane Expansion','Add protected bike lanes along Main Street to improve commuter safety.','River City, TX','2025-01-20'), -- 20
+(2, 'Urban Farm Expansion','Add 30 new raised beds and a rain‑water harvesting system to the downtown farm.','Northside District, WA','2024-09-22'), -- 21
+(2, 'School Garden Program','Build a teaching garden at Jefferson High School and provide curriculum materials.','Northside District, WA','2024-10-18'), -- 22
+(2, 'Community Compost Hub','Set up a neighborhood compost drop‑off point and run workshops on composting.','Northside District, WA','2024-11-12'), -- 23
+(2, 'Pollinator Meadow','Plant a 1‑acre meadow with native wildflowers to support bees and butterflies.','Northside District, WA','2024-12-08'), -- 24
+(2, 'Winter Food‑Shelf Initiative','Grow and preserve winter vegetables for local food‑banks.','Northside District, WA','2025-01-15'), -- 25
+(3, 'Food‑Bank Volunteer Day','Collect, sort, and distribute food donations for local families.','Eastside Community Center, NY','2024-09-30'), -- 26
+(3, 'Senior Center Tech Workshop','Teach seniors basic computer and smartphone skills.','Eastside Community Center, NY','2024-10-25'), -- 27
+(3, 'Neighborhood Cleanup','Organise a street‑wide litter pick‑up and recycling drive.','Eastside Community Center, NY','2024-11-20'), -- 28
+(3, 'Holiday Toy Drive','Gather, sort, and deliver toys to children in need.','Eastside Community Center, NY','2024-12-15'), -- 29
+(3, 'Emergency Shelter Staffing','Volunteer shifts to staff the local emergency shelter during winter.','Eastside Community Center, NY','2025-01-10');; -- 30
 
 CREATE TABLE category_service (
 	category_id INTEGER,
@@ -62,7 +77,7 @@ CREATE TABLE category_service (
 
 INSERT INTO category_service (category_id,service_project_id)
 VALUES
-(1,1),(1,7),(1,8),(1,10),(1,11), -- Enironmental
-(2,3),(2,5),(2,11),(2,12),(2,15), -- Educational
-(3,1),(3,2),(3,3),(3,4),(3,6),(3,7),(3,8),(3,9),(3,10),(3,14), -- Community Service
-(4,1),(4,2),(4,4),(4,7),(4,8),(4,11),(4,12),(4,15); -- Health and Wellness
+(1,1),(1,7),(1,8),(1,10),(1,11),(1,16),(1,17),(1,19),(1,21),(1,23),(1,24),(1,28), -- Enironmental
+(2,3),(2,5),(2,11),(2,12),(2,15),(2,22),(2,27), -- Educational
+(3,1),(3,2),(3,3),(3,4),(3,6),(3,7),(3,8),(3,9),(3,10),(3,14),(3,16),(3,17),(3,18),(3,19),(3,21),(3,25),(3,26),(3,27),(3,28),(3,29),(3,30), -- Community Service
+(4,1),(4,2),(4,4),(4,7),(4,8),(4,11),(4,12),(4,15),(4,17),(4,19),(4,20),(4,25),(4,26); -- Health and Wellness
