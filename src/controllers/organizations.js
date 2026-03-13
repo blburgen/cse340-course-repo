@@ -1,4 +1,4 @@
-import { getAllOrganizations } from "../models/organizations";
+import { getAllOrganizations } from "../models/organizations.js";
 
 const showOrganizationsPage = async (req, res) => {
     const organizations = await getAllOrganizations();
