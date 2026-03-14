@@ -91,6 +91,25 @@ main li div{
     padding-top: 10px;
 }
 
+.project{
+    padding: 0px;
+}
+
+.project:hover, .project a:hover{
+    color: var(--third-color);
+    background-color: var(--primary-color);
+}
+
+.project a{
+    border-radius: 1rem;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
 @media screen and (max-width: 1000px) {
     main ul li{
         width: 45%;
