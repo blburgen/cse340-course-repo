@@ -30,27 +30,27 @@ CREATE TABLE service_project (
 	title VARCHAR(150) NOT NULL,
 	description TEXT NOT NULL,
 	location VARCHAR(150),
-	date VARCHAR(150),
+	date DATE,
 	FOREIGN KEY (organization_id) REFERENCES organization (organization_id) ON DELETE SET NULL
 );
 
 INSERT INTO service_project (organization_id,title,description,location,date)
 VALUES
-(3,'Park Cleanup','Join us to clean up local parks and make them beautiful!','','2026/06/12'), -- 1
-(3,'Food Drive','Help collect and distribute food to those in need.','Utah Food Bank','2026/05/10'), -- 2
-(3,'Community Tutoring','Volunteer to tutor students in various subjects.','local schools','Tuesdays'), -- 3
-(3,'Make Cards For Seniors','Come join us to uplift our seniors, by making thank you cards','Next left church','2026/03/20'), -- 4
-(3,'Become A Mentor','Come volunteer to become a mentor for those looking to get a job','Work services building','Wednesdays'), -- 5
-(1,'Build Swing Set','Volunteer to help set up a swing set in Rock River Park','Rock River Park','2026/04/01'), -- 6
-(1,'Build Local Community Garden','Help us build a community garden next to Rim Rock Park','Rim Rock Park','2026/05/01'), -- 7
-(1,'Trash Clean Up','Our roads need some TLC.  Come help the community clean up trash on our roads.','Get Good Park','2026/04/15'), -- 8
-(1,'Public Mural','Our local grocery store would like to beautify its building.  Come help paint a public mural.','Tom Grocery Store','2026/03/20'), -- 9
-(1,'Clean Graffiti','Help clean up our train station by removing graffiti.','Roger Train Station','2026/04/25'), -- 10
-(2,'Community Garden Opening','Join us in planting our community garden and git a pot to take home with you.','Green River Community Garden','2026/03/20'), -- 11
-(2,'Plant A Tree','Help to beautify our local community by planting a free tree in your yard.','Green River Green House','2026/04/11'), -- 12
-(2,'Plant Vegitables','Come plan some vegitable in our community garden and take home some for yourself.','Rock Road Community Garden','2026/04/01'), -- 13
-(2,'Green House Construction','Our community garden needs a new green house.  Please come and help put it up.','Rocky Sanders Gardens','2026/05/01'), -- 14
-(2,'Learn To Grow','Help others learn how to keep a garden or come learn how to keep a garden.','Sam Community Park','2026/03/25'), --15
+(3,'Park Cleanup','Join us to clean up local parks and make them beautiful!','','2026-06-12'), -- 1
+(3,'Food Drive','Help collect and distribute food to those in need.','Utah Food Bank','2026-05-10'), -- 2
+(3,'Community Tutoring','Volunteer to tutor students in various subjects.','local schools','2026-11-18'), -- 3
+(3,'Make Cards For Seniors','Come join us to uplift our seniors, by making thank you cards','Next left church','2026-03-20'), -- 4
+(3,'Become A Mentor','Come volunteer to become a mentor for those looking to get a job','Work services building','2026-04-20'), -- 5
+(1,'Build Swing Set','Volunteer to help set up a swing set in Rock River Park','Rock River Park','2026-04-01'), -- 6
+(1,'Build Local Community Garden','Help us build a community garden next to Rim Rock Park','Rim Rock Park','2026-05-01'), -- 7
+(1,'Trash Clean Up','Our roads need some TLC.  Come help the community clean up trash on our roads.','Get Good Park','2026-04-15'), -- 8
+(1,'Public Mural','Our local grocery store would like to beautify its building.  Come help paint a public mural.','Tom Grocery Store','2026-03-20'), -- 9
+(1,'Clean Graffiti','Help clean up our train station by removing graffiti.','Roger Train Station','2026-04-25'), -- 10
+(2,'Community Garden Opening','Join us in planting our community garden and git a pot to take home with you.','Green River Community Garden','2026-03-20'), -- 11
+(2,'Plant A Tree','Help to beautify our local community by planting a free tree in your yard.','Green River Green House','2026-04-11'), -- 12
+(2,'Plant Vegitables','Come plan some vegitable in our community garden and take home some for yourself.','Rock Road Community Garden','2026-04-01'), -- 13
+(2,'Green House Construction','Our community garden needs a new green house.  Please come and help put it up.','Rocky Sanders Gardens','2026-05-01'), -- 14
+(2,'Learn To Grow','Help others learn how to keep a garden or come learn how to keep a garden.','Sam Community Park','2026-03-25'), --15
 (1, 'Riverbank Revitalization','Renovate the downtown riverbank promenade with sustainable materials and native plants.','River City, TX','2024-09-15'), -- 16
 (1, 'Community Playground Build','Construct an eco‑friendly playground with recycled wood and solar lighting.','River City, TX','2024-10-10'), -- 17
 (1, 'Solar Roof Installation','Install photovoltaic panels on the roof of the local community center.','River City, TX','2024-11-05'), -- 18
