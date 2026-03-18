@@ -5,5 +5,16 @@
     <div class="topline"><strong>Location:</strong><%= projectDetails.location %></div>
     <div><strong>Date:</strong><%= projectDetails.date.toDateString() %></div>
     <div><strong>Sponsored By:</strong><a href="/organization/<%= projectDetails.organization_id %>"><strong><%= projectDetails.name %></strong></a></div>
+    <div><h3>Categories</h3>
+        <ul>
+            <% projectCategories.forEach(category => { %>
+                <li>
+                    <a href="/category/<%= category.category_id %>">
+                        <%= category.name %>
+                    </a>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
 </main>
 <%- include('partials/footer') %>
