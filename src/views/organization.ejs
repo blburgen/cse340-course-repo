@@ -9,7 +9,11 @@
     <h3>Service Projects</h3>
     <ul>
         <% projects.forEach(project => { %>
-            <li class="project"><a href="/project/<%= project.service_project_id %>"><%= project.title %></a></li>
+            <li class="project">
+                <a href="/project/<%= project.service_project_id %>">
+                    <%= project.title %>
+                </a>
+            </li>
         <% }); %>
     </ul>
 </main>
