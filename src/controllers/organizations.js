@@ -1,4 +1,5 @@
 import { getAllOrganizations, getOrganizationDetails } from "../models/organizations.js";
+import { createOrganization } from "../models/organization.js";
 import { getProjectsByOrganizationId } from "../models/projects.js";
 
 const showOrganizationsPage = async (req, res) => {
@@ -17,4 +18,22 @@ const showOrganizationDetailsPage = async (req, res) => {
     res.render('organization', {title, organizationDetails, projects});
 };
 
-export { showOrganizationsPage, showOrganizationDetailsPage };
+const showNewOrganizationForm = async (req, res) => {
+    const title = 'Add New Organization';
+
+    res.render('new-organization', { title });
+}
+
+const processNewOrganizationForm = async (req, res) => {
+    const { name, description, contactEmail } = req.body;
+    const logoFilename = 'placeholder-logo.png'; // Use the placeholder logo for all new organizations
+
+    const organizationId = await createOrganization(name, description, contactEmail, logoFilename);
+
+    // Set a success flash message
+    req.flash('success', 'Organization added successfully!');
+
+    res.redirect(`/organization/${organizationId}`);
+};
+
+export { showOrganizationsPage, showOrganizationDetailsPage, showNewOrganizationForm, processNewOrganizationForm };
