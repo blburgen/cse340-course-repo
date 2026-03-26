@@ -149,3 +149,36 @@ main li div{
     background-color: #d1ecf1;
     border-color: #bee5eb;
 }
+
+form {
+   margin: 10px auto;
+   width: 80vw;
+   max-width: 600px;
+   min-width: 300px;
+   justify-content: center;
+}
+
+form > div {
+    margin: 10px auto;
+    display: flex;
+    display: wrap;
+}
+
+form label {
+    margin: auto;
+}
+
+form input, form textarea, form select {
+    width: 60vw;
+    min-width: 200px;
+    max-width: 400px;
+    margin: 5px;
+    padding: 5px;
+    font-size: larger;
+}
+
+form button {
+    display: block;
+    margin: auto;
+    font-size: larger;
+}
