@@ -14,7 +14,7 @@ VALUES
 
 CREATE TABLE category (
 	category_id SERIAL PRIMARY KEY,
-	name VARCHAR(75) NOT NULL
+	name VARCHAR(100) NOT NULL
 );
 
 INSERT INTO category (name)

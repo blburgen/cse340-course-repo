@@ -3,7 +3,7 @@ import db from './db.js'
 const getAllCategories = async() => {
   const query = `
     SELECT category_id, name
-    FROM public.category
+    FROM category
     ORDER BY name;
   `;
 
@@ -12,7 +12,7 @@ const getAllCategories = async() => {
   return result.rows;
 }
 
-const getCategoryById = async(categoryId) => {
+const getCategoryById = async(id) => {
   const query = `
     SELECT
       category_id,
@@ -20,13 +20,13 @@ const getCategoryById = async(categoryId) => {
     FROM category
     WHERE category_id = $1
   `
-  const query_params = [categoryId]
+  const query_params = [id]
   const result = await db.query(query, query_params);
 
-  return result.rows;
+  return result.rows[0];
 }
 
-const getCategoryDetails = async(categoryId) =>{
+const getCategoryDetails = async(id) =>{
   const query = `
     SELECT 
       c.category_id,
@@ -48,7 +48,7 @@ const getCategoryDetails = async(categoryId) =>{
     ORDER BY s.date;
   `;
 
-  const query_params = [categoryId]
+  const query_params = [id]
   const result = await db.query(query, query_params);
 
   return result.rows;
@@ -77,4 +77,47 @@ const updateCategoryAssignments = async(projectId, categoryIds) => {
     }
 }
 
-export { getAllCategories, getCategoryDetails, getCategoryById, assignCategoryToProject, updateCategoryAssignments }  
+const createCategory = async (name) => {
+    const query = `
+      INSERT INTO category (name)
+      VALUES ($1)
+      RETURNING category_id;
+    `;
+
+    const query_params = [name];
+    const result = await db.query(query, query_params);
+
+    if (result.rows.length === 0) {
+        throw new Error('Failed to create category');
+    }
+
+    if (process.env.ENABLE_SQL_LOGGING === 'true') {
+        console.log('Created new category with ID:', result.rows[0].category_id);
+    }
+
+    return result.rows[0].category_id;
+}
+
+const updateCategory = async (category_id, name) => {
+  const query = `
+    UPDATE category
+    SET name = $1
+    WHERE category_id = $2
+    RETURNING category_id;  
+  `;
+
+  const query_params = [name, category_id];
+  const result = await db.query(query, query_params);
+  
+  if (result.rows.length === 0) {
+    throw new Error('Category not found');
+  }
+
+  if (process.env.ENABLE_SQL_LOGGING === 'true') {
+    console.log('Updated category with ID:', category_id);
+  }
+
+  return result.rows[0].category_id;
+}
+
+export { getAllCategories, getCategoryDetails, getCategoryById, assignCategoryToProject, updateCategoryAssignments, createCategory, updateCategory }  
