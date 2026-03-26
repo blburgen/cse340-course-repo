@@ -122,8 +122,7 @@ const createProject = async (title, description, location, date, organizationId)
     return result.rows[0].service_project_id;
 }
 
-const updateProject = async (service_project_id, organization_id, title, description, 
-  location, date) => {
+const updateProject = async (service_project_id, organization_id, title, description, location, date) => {
   const query = `
     UPDATE service_project
     SET organization_id = $1, title = $2, description = $3, location = $4, date = $5
@@ -131,11 +130,10 @@ const updateProject = async (service_project_id, organization_id, title, descrip
     RETURNING service_project_id;  
   `;
 
-  const query_params = [organization_id, title, description, location, date, 
-    service_project_id];
+  const query_params = [organization_id, title, description, location, date, service_project_id];
   const result = await db.query(query, query_params);
-
-  if (result.row.length === 0){
+  
+  if (result.rows.length === 0) {
     throw new Error('Project not found');
   }
 
