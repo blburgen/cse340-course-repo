@@ -161,7 +161,7 @@ form {
 form > div {
     margin: 10px auto;
     display: flex;
-    display: wrap;
+    flex-wrap: wrap;
 }
 
 form label {
@@ -181,4 +181,21 @@ form button {
     display: block;
     margin: auto;
     font-size: larger;
+}
+
+form .check{
+    display: block;
+    height: 50px;
+
+}
+
+.label{
+    font-size: larger;
+}
+
+input[type="checkbox"] {
+    margin: 10px 1px;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
 }
