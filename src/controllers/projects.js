@@ -89,8 +89,6 @@ const showEditProjectForm = async (req, res) => {
 const processEditProjectForm = async (req, res) => {
     const projectId = req.params.id;
     const { title, description, location, date, organizationId } = req.body;
-    console.log (projectId, organizationId, title, description, location, date);
-    await updateProject(projectId, organizationId, title, description, location, date);
 
     // Check for validation errors
     const results = validationResult(req);
@@ -104,8 +102,10 @@ const processEditProjectForm = async (req, res) => {
         return res.redirect('/edit-project/' + req.params.id);
     }
     // Set a success flash message
-    req.flash('success', 'Project updated successfully!');
 
+    await updateProject(projectId, organizationId, title, description, location, date);
+
+    req.flash('success', 'Project updated successfully!');
     res.redirect(`/project/${projectId}`);
 };
 

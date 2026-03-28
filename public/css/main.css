@@ -189,6 +189,10 @@ form .check{
 
 }
 
+.grow{
+    width: 100%;
+}
+
 .label{
     font-size: larger;
 }

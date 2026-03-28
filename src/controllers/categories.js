@@ -67,15 +67,11 @@ const processNewCategory = async (req, res) => {
         //Redirect back to the new category form
         return res.redirect('/new-category');
     }
-
     const { name } = req.body;
-
     const categoryId = await createCategory(name);
 
     req.flash('success', 'Category added successfully!');
-
-    res.redirect(`/category/${categoryId}`);
-    
+    res.redirect(`/category/${categoryId}`);   
 };
 
 const showEditCategoryForm = async (req, res) => {
@@ -88,10 +84,9 @@ const showEditCategoryForm = async (req, res) => {
 };
 
 const processEditCategoryForm = async (req, res) => {
+    
     const categoryId = req.params.id;
     const { name } = req.body;
-
-    await updateCategory(categoryId, name);
 
     // Check for validation errors
     const results = validationResult(req);
@@ -105,6 +100,8 @@ const processEditCategoryForm = async (req, res) => {
         return res.redirect('/edit-category/' + req.params.id);
     }
     
+    await updateCategory(categoryId, name);
+
     // Set a success flash message
     req.flash('success', 'Category updated successfully!');
 
