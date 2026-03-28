@@ -10,7 +10,7 @@ import { showProjectsPage, showProjectDetailsPage, showNewProjectForm,
 import { showCategoriesPage, showCategoryDetailsPage, showAssignCategoriesForm, 
     processAssignCategoriesForm, showNewCategoryForm, categoryValidation, processNewCategory, showEditCategoryForm, processEditCategoryForm } from './categories.js';
 import { testErrorPage } from './errors.js';
-import { showUserRegistrationForm, processUserRegistrationForm } from './users.js';
+import { showUserRegistrationForm, processUserRegistrationForm, showLoginForm, processLoginForm, processLogout, requireLogin,showDashboard } from './users.js';
 
 const router = express.Router();
 
@@ -63,6 +63,14 @@ router.post('/edit-category/:id', categoryValidation, processEditCategoryForm);
 // User registration routes
 router.get('/register', showUserRegistrationForm);
 router.post('/register', processUserRegistrationForm);
+
+// User login routes
+router.get('/login', showLoginForm);
+router.post('/login', processLoginForm);
+router.get('/logout', processLogout);
+
+// Protected dashboard route
+router.get('/dashboard', requireLogin, showDashboard);
 
 
 // error-handling routes
