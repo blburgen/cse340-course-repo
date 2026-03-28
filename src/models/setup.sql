@@ -81,3 +81,25 @@ VALUES
 (2,3),(2,5),(2,11),(2,12),(2,15),(2,22),(2,27), -- Educational
 (3,1),(3,2),(3,3),(3,4),(3,6),(3,7),(3,8),(3,9),(3,10),(3,14),(3,16),(3,17),(3,18),(3,19),(3,21),(3,25),(3,26),(3,27),(3,28),(3,29),(3,30), -- Community Service
 (4,1),(4,2),(4,4),(4,7),(4,8),(4,11),(4,12),(4,15),(4,17),(4,19),(4,20),(4,25),(4,26); -- Health and Wellness
+
+CREATE TABLE roles (
+	role_id SERIAL PRIMARY KEY,
+	role_name VARCHAR(50) NOT NULL UNIQUE,
+	role_description TEXT
+);
+
+INSERT INTO roles (role_name, role_description)
+VALUES ('user', 'Standard user with basic access'),
+	('admin', 'Administrator with full system access');
+
+SELECT * FROM roles;
+
+CREATE TABLE users (
+	user_id SERIAL PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	email VARCHAR(100) NOT NULL UNIQUE,
+	password_hash VARCHAR(255) NOT NULL,
+	role_id INTEGER REFERENCES roles(role_id),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
