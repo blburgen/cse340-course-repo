@@ -59,7 +59,7 @@ const authenticateUser = async (email, password) => {
 
 const findAllUsers = async () => {
     const query = `
-        SELECT u.user_id, u.name, r.role_name 
+        SELECT u.user_id, u.name, u.email, r.role_name 
         FROM users u
         JOIN roles r ON u.role_id = r.role_id
     `;
