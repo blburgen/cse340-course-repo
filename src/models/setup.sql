@@ -103,3 +103,10 @@ CREATE TABLE users (
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE volunteered(
+	user_id INTEGER,
+	service_project_id INTEGER,
+	PRIMARY KEY (service_project_id,user_id),
+	FOREIGN KEY (service_project_id) REFERENCES service_project (service_project_id),
+	FOREIGN KEY (user_id) REFERENCES users (user_id)
+);

@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+
+<main>
+    <h1><%= title %></h1>
+    <ul>
+        <% projects.forEach(project => { %>
+            <li class="users"><a href="/project/<%= project.service_project_id %>">
+                Project: <%=project.title%><br>
+                Location: <%=project.location%><br>
+                Date: <%=project.date.toDateString()%>                
+            </a></li>
+        <% }); %>
+    </ul>
+
+</main>
+
+<%- include('partials/footer') %>

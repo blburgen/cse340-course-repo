@@ -1,3 +1,4 @@
+import { query } from 'express-validator';
 import db from './db.js'
 import bcrypt from 'bcrypt';
 
@@ -73,4 +74,30 @@ const findAllUsers = async () => {
     return result.rows;
 };
 
-export { createUser, authenticateUser, findAllUsers };
+const userVolunteered = async (email) => {
+    const query = `
+        SELECT u.user_id, u.name, s.service_project_id, s.title, s.location, s.date
+        FROM users u
+        JOIN volunteered v
+            ON v.user_id = u.user_id
+        JOIN service_project s
+            ON v.service_project_id = s.service_project_id
+        WHERE u.email = $1
+    `;
+
+    const query_params = [email];
+    const result = await db.query(query, query_params);
+    return result.rows;
+};
+
+const volunteer = async (user_id, service_project_id) => {
+    db.query(query) = `
+        INSERT INTO volunteered (user_id,service_project_id)
+        Values ($1,$2)
+    `
+    const query_params = [user_id, service_project_id];
+    const result = await db.query(query, query_params);
+    return result.rows[0];
+}
+
+export { createUser, authenticateUser, findAllUsers, userVolunteered, volunteer };

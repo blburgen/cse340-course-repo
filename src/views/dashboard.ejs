@@ -6,6 +6,10 @@
     <p>Name: <%= name %></p>
     <p>Username: <%= email %></p>
 
+    <% if (user) { %>
+        <p><a href="/volunteering">See Projects You Have Volunteered For</a></p>
+    <% } %>
+
     <% if (user && user.role_name === 'admin') { %>
         <p><a href="/users">See Users</a></p>
     <% } %>
