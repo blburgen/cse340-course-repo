@@ -91,7 +91,7 @@ const userVolunteered = async (email) => {
 };
 
 const volunteer = async (user_id, service_project_id) => {
-    db.query(query) = `
+    const query = `
         INSERT INTO volunteered (user_id,service_project_id)
         Values ($1,$2)
     `
@@ -100,4 +100,30 @@ const volunteer = async (user_id, service_project_id) => {
     return result.rows[0];
 }
 
-export { createUser, authenticateUser, findAllUsers, userVolunteered, volunteer };
+const deletevolunteer = async (user_id, service_project_id) => {
+    const query = `
+        DELETE FROM volunteered WHERE user_id = $1 AND service_project_id = $2 
+    `
+    const query_params = [user_id, service_project_id];
+    const result = await db.query(query, query_params);
+    return result.rows[0];
+}
+
+const isVolunteer = async (user_id, service_project_id) => {
+    const query = `
+        SELECT u.user_id, u.name, s.service_project_id, s.title, s.location, s.date
+        FROM users u
+        JOIN volunteered v
+            ON v.user_id = u.user_id
+        JOIN service_project s
+            ON v.service_project_id = s.service_project_id
+        WHERE u.user_id = $1 AND s.service_project_id = $2
+    `;
+
+    const query_params = [user_id, service_project_id];
+    const result = await db.query(query, query_params);
+    console.log(result.rows);
+    return result.rows[0];
+}
+
+export { createUser, authenticateUser, findAllUsers, userVolunteered, volunteer, deletevolunteer, isVolunteer };

@@ -5,6 +5,14 @@
     <div class="topline"><strong>Location:</strong><%= projectDetails.location %></div>
     <div><strong>Date:</strong><%= projectDetails.date.toDateString() %></div>
     <div><strong>Sponsored By:</strong><a href="/organization/<%= projectDetails.organization_id %>"><strong><%= projectDetails.name %></strong></a></div>
+    <% if (user) { %>
+        <form action="/project/:id" method="post">
+            <input type="text" name="user_id" id="user_id" hidden value="<%=user.user_id%>">
+            <input type="text" name="service_project_id" id="service_project_id" hidden value="<%=projectDetails.service_project_id%>">
+            
+            <button type="submit" id="isVol">Un-volunteer</button>
+        </form>
+    <% } %>
     <% if (user && user.role_name === 'admin') { %>
         <p><a href="/edit-project/<%= projectDetails.service_project_id %>">Edit Project</a></p>
     <% } %>

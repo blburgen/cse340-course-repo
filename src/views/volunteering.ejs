@@ -4,11 +4,19 @@
     <h1><%= title %></h1>
     <ul>
         <% projects.forEach(project => { %>
-            <li class="users"><a href="/project/<%= project.service_project_id %>">
-                Project: <%=project.title%><br>
-                Location: <%=project.location%><br>
-                Date: <%=project.date.toDateString()%>                
-            </a></li>
+            <li>
+                <a class="project" href="/project/<%= project.service_project_id %>">
+                    Project: <%=project.title%><br>
+                    Location: <%=project.location%><br>
+                    Date: <%=project.date.toDateString()%>                
+                </a>
+                <form class='unvolunteer' action="/volunteering" method="post">
+                    <input type="text" name="user_id" id="user_id" hidden value="<%=project.user_id%>">
+                    <input type="text" name="service_project_id" id="service_project_id" hidden value="<%=project.service_project_id%>">
+                    <button type="submit" >Un-volunteer</button>
+                </form>
+            </li>
+            
         <% }); %>
     </ul>
 

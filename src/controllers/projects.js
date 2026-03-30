@@ -1,6 +1,7 @@
 import { getAllProjects, getUpcomingProjects, getProjectDetails, getProjectCategories, createProject, updateProject } from "../models/projects.js";
 import { getAllOrganizations } from "../models/organizations.js";
 import { body, validationResult } from "express-validator";
+import { isVolunteer } from "../models/users.js";
 
 const number_of_projects = 5;
 

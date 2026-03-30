@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { createUser, authenticateUser, findAllUsers, userVolunteered } from '../models/users.js';
+import { createUser, authenticateUser, findAllUsers, userVolunteered, volunteer, deletevolunteer, isVolunteer } from '../models/users.js';
 
 const showUserRegistrationForm = (req, res) => {
     res.render('register', { title: 'Register' });
@@ -113,8 +113,27 @@ const showVolunteering = async (req, res) => {
     const projects = await userVolunteered(user.email);
     res.render('volunteering', { 
         title: 'Volunteering',
-        projects
+        projects, 
     });
 }
 
-export { showUserRegistrationForm, processUserRegistrationForm, showLoginForm, processLoginForm, processLogout, requireLogin, showDashboard, requireRole, showUsers, showVolunteering };
+const processDeleteVolunteer = async (req, res) => {
+    const { user_id, service_project_id } = req.body;
+    await deletevolunteer(user_id, service_project_id);
+
+    req.flash('success', 'Volunteer Status updated successfully!');
+
+    res.redirect(`/volunteering`);
+}
+
+const switchVolunteer = async (req, res) => {
+    const { user_id, service_project_id } = req.body;
+    const userVolunteer = await isVolunteer(user_id, service_project_id);
+    if (userVolunteer){
+        deletevolunteer(user_id, service_project_id);
+    } else {
+        volunteer(user_id, service_project_id);
+    }
+}
+
+export { showUserRegistrationForm, processUserRegistrationForm, showLoginForm, processLoginForm, processLogout, requireLogin, showDashboard, requireRole, showUsers, showVolunteering, processDeleteVolunteer, switchVolunteer };

@@ -179,6 +179,10 @@ form input, form textarea, form select {
     font-size: larger;
 }
 
+.unvolunteer{
+    width: 100%;
+}
+
 form button {
     display: block;
     margin: auto;
