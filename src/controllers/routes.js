@@ -10,7 +10,7 @@ import { showProjectsPage, showProjectDetailsPage, showNewProjectForm,
 import { showCategoriesPage, showCategoryDetailsPage, showAssignCategoriesForm, 
     processAssignCategoriesForm, showNewCategoryForm, categoryValidation, processNewCategory, showEditCategoryForm, processEditCategoryForm } from './categories.js';
 import { testErrorPage } from './errors.js';
-import { showUserRegistrationForm, processUserRegistrationForm, showLoginForm, processLoginForm, processLogout, requireLogin, showDashboard, requireRole, showUsers, showVolunteering, processDeleteVolunteer, switchVolunteer } from './users.js';
+import { showUserRegistrationForm, processUserRegistrationForm, showLoginForm, processLoginForm, processLogout, requireLogin, showDashboard, requireRole, showUsers, showVolunteering, processDeleteVolunteer, processDeleteVolunteerDash, switchVolunteer } from './users.js';
 
 const router = express.Router();
 
@@ -75,9 +75,10 @@ router.get('/dashboard', requireLogin, showDashboard);
 router.get('/users', requireRole('admin'), showUsers);
 
 router.get('/volunteering', requireLogin, showVolunteering);
-router.post('/volunteering', processDeleteVolunteer)
+router.post('/volunteering', processDeleteVolunteer);
+router.post('/dashboard', processDeleteVolunteerDash);
 
-router.post('/project/:id', switchVolunteer)
+router.post('/project/:id', switchVolunteer);
 
 
 // error-handling routes

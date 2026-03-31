@@ -73,12 +73,14 @@ const requireLogin = (req, res, next) => {
     next();
 };
 
-const showDashboard = (req, res) => {
+const showDashboard = async (req, res) => {
     const user = req.session.user;
+    const projects = await userVolunteered(user.email);
     res.render('dashboard', { 
         title: 'Dashboard',
         name: user.name,
-        email: user.email
+        email: user.email,
+        projects
     });
 };
 
@@ -126,14 +128,27 @@ const processDeleteVolunteer = async (req, res) => {
     res.redirect(`/volunteering`);
 }
 
+const processDeleteVolunteerDash = async (req, res) => {
+    const { user_id, service_project_id } = req.body;
+    await deletevolunteer(user_id, service_project_id);
+
+    req.flash('success', 'Volunteer Status updated successfully!');
+
+    res.redirect(`/dashboard`);
+}
+
 const switchVolunteer = async (req, res) => {
     const { user_id, service_project_id } = req.body;
     const userVolunteer = await isVolunteer(user_id, service_project_id);
     if (userVolunteer){
         deletevolunteer(user_id, service_project_id);
+        req.flash('success', 'You Un-Volunteered!');
+        res.redirect(`/project/` + service_project_id);
     } else {
         volunteer(user_id, service_project_id);
+        req.flash('success', 'You Volunteered!');
+        res.redirect(`/project/` + service_project_id);
     }
 }
 
-export { showUserRegistrationForm, processUserRegistrationForm, showLoginForm, processLoginForm, processLogout, requireLogin, showDashboard, requireRole, showUsers, showVolunteering, processDeleteVolunteer, switchVolunteer };
+export { showUserRegistrationForm, processUserRegistrationForm, showLoginForm, processLoginForm, processLogout, requireLogin, showDashboard, requireRole, showUsers, showVolunteering, processDeleteVolunteer, processDeleteVolunteerDash, switchVolunteer };

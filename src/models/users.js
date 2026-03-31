@@ -122,7 +122,6 @@ const isVolunteer = async (user_id, service_project_id) => {
 
     const query_params = [user_id, service_project_id];
     const result = await db.query(query, query_params);
-    console.log(result.rows);
     return result.rows[0];
 }
 

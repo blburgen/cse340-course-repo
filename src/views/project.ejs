@@ -9,8 +9,7 @@
         <form action="/project/:id" method="post">
             <input type="text" name="user_id" id="user_id" hidden value="<%=user.user_id%>">
             <input type="text" name="service_project_id" id="service_project_id" hidden value="<%=projectDetails.service_project_id%>">
-            
-            <button type="submit" id="isVol">Un-volunteer</button>
+            <button type="submit" id="isVol">Switch Volunteer Status</button>
         </form>
     <% } %>
     <% if (user && user.role_name === 'admin') { %>

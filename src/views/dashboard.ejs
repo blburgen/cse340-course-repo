@@ -13,6 +13,24 @@
     <% if (user && user.role_name === 'admin') { %>
         <p><a href="/users">See Users</a></p>
     <% } %>
+    <ul>
+        <% projects.forEach(project => { %>
+            <li>
+                <a class="project" href="/project/<%= project.service_project_id %>">
+                    Project: <%=project.title%><br>
+                    Location: <%=project.location%><br>
+                    Date: <%=project.date.toDateString()%>                
+                </a>
+                <form class='unvolunteer' action="/dashboard" method="post">
+                    <input type="text" name="user_id" id="user_id" hidden value="<%=project.user_id%>">
+                    <input type="text" name="service_project_id" id="service_project_id" hidden value="<%=project.service_project_id%>">
+                    <button type="submit" >Un-volunteer</button>
+                </form>
+            </li>
+            
+        <% }); %>
+    </ul>
+    
 
 </main>
 
