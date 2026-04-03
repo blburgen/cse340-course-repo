@@ -122,7 +122,11 @@ const isVolunteer = async (user_id, service_project_id) => {
 
     const query_params = [user_id, service_project_id];
     const result = await db.query(query, query_params);
-    return result.rows[0];
+    console.log(await result.rows);
+    if(result.rows.length > 0){
+        return true;
+    }
+    return false;
 }
 
 export { createUser, authenticateUser, findAllUsers, userVolunteered, volunteer, deletevolunteer, isVolunteer };

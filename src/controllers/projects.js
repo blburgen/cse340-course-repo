@@ -34,11 +34,16 @@ const showProjectsPage = async (req, res) => {
 };
 
 const showProjectDetailsPage = async (req, res) => {
+    const user = await req.session.user.user_id;
     const projectId = req.params.id;
     const projectDetails = await getProjectDetails(projectId);
     const projectCategories = await getProjectCategories(projectId);
     const title = 'Project Details';
-    res.render('project', { title, projectDetails, projectCategories });
+    let projectStatus = "Volunteer";
+    if(await isVolunteer(user, projectId)){
+        projectStatus = "Remove from Volunteer List"
+    };
+    res.render('project', { title, projectStatus, projectDetails, projectCategories });
 };
 
 const showNewProjectForm = async (req, res) => {
