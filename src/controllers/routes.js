@@ -75,10 +75,10 @@ router.get('/dashboard', requireLogin, showDashboard);
 router.get('/users', requireRole('admin'), showUsers);
 
 router.get('/volunteering', requireLogin, showVolunteering);
-router.post('/volunteering', processDeleteVolunteer);
-router.post('/dashboard', processDeleteVolunteerDash);
+router.post('/volunteering', requireLogin, processDeleteVolunteer);
+router.post('/dashboard', requireLogin, processDeleteVolunteerDash);
 
-router.post('/project/:id', switchVolunteer);
+router.post('/project/:id', requireLogin, switchVolunteer);
 
 
 // error-handling routes
